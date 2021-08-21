@@ -1,0 +1,5 @@
+# m68k-atari-mint-gcc -static -std=c99 -Os -fomit-frame-pointer -Wl,--oformat=binary -c -o test.tos test.c
+m68k-atari-mint-gcc -static -std=c99 -Os -fomit-frame-pointer -o test.tos test.c
+# m68k-atari-mint-objcopy --only-section=.text --output-target binary test.o test.inl
+# m68k-atari-mint-objdump -d test.o
+# m68k-atari-mint-ar rcs libtest.a test.o
