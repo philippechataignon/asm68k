@@ -3,6 +3,7 @@
 _asm_multi:
     MOVE.L  4(SP),D0    ; get A,B from stack
     MOVE.L  8(SP),D1
+    MOVE.L  D2,-(SP)    ; save D2
     MOVE.L  D0,-(SP)    ; push D0=A
     MULU.W  D1,D0       ; D0=Al*Bl
     MOVE.L  D1,D2       ; B in D1 and D2
@@ -13,4 +14,5 @@ _asm_multi:
     SWAP    D1          ; same as <<16 
     CLR.W   D1          ;
     ADD.L   D1,D0       ; add to Al*Bl
+    MOVE.L  (SP)+,D2    ; restore D2
     RTS

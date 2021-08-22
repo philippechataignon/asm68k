@@ -6,7 +6,7 @@ ASFLAGS=-quiet -Faout -x -m68000
 LIBCMINI=~/src/libcmini
 CC=m68k-atari-mint-gcc
 #CFLAGS=-c -fomit-frame-pointer -std=c99 -I $(LIBCMINI)/include -g -Wl,--traditional-format
-CFLAGS=-c -std=c99 -Os -I $(LIBCMINI)/include
+CFLAGS=-c -std=c99 -Os -fomit-frame-pointer -I $(LIBCMINI)/include
 
 # LINKER PARAMETERS
 LDFLAGS=-nostdlib -s -L $(LIBCMINI)/lib -lcmini -lgcc
