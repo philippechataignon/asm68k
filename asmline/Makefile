@@ -5,12 +5,10 @@ ASFLAGS=-quiet -Faout -x -m68000
 # GCC PARAMETERS
 LIBCMINI=~/src/libcmini
 CC=m68k-atari-mint-gcc
-#CFLAGS=-c -fomit-frame-pointer -std=c99 -I $(LIBCMINI)/include -g -Wl,--traditional-format
-#CFLAGS=-c -std=c99 -Os -fomit-frame-pointer -I $(LIBCMINI)/include
-#CFLAGS=-c -std=c99 -Os -I $(LIBCMINI)/include
-CFLAGS=-c -std=c99 -Os
+CFLAGS=-c -fomit-frame-pointer -std=c99 -I $(LIBCMINI)/include
 
 # LINKER PARAMETERS
+# -s  Remove all symbol table and relocation information from the executable.
 LDFLAGS=-nostdlib -s -L $(LIBCMINI)/lib -lcmini -lgcc
 
 CSRC=$(wildcard *.c)
