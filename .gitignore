@@ -1,0 +1,14 @@
+*.o
+*.so
+*.bin
+*.inl
+*.gfa
+*.GFA
+*.tos
+*.prg
+*.ccp
+*.qif
+*.BAK
+*.LST
+*.a
+*.vdt
