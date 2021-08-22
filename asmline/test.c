@@ -1,11 +1,11 @@
 int test(int src)
 {
     int dst;
-    asm volatile( \
-        "move.l  %1,%0\n\t"
-        "add.l  #1,%0\n\t"
-    : "=r" (dst)
-    : "r" (src)
+    __asm__ volatile(
+        "move.l  %[src],%[dst]      \n\t"
+        "addq.l  #1,%[dst]          \n\t"
+    : [dst] "=r" (dst)
+    : [src] "r" (src)
     );
     return dst;
 }

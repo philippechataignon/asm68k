@@ -8,7 +8,7 @@ CC=m68k-atari-mint-gcc
 #CFLAGS=-c -fomit-frame-pointer -std=c99 -I $(LIBCMINI)/include -g -Wl,--traditional-format
 #CFLAGS=-c -std=c99 -Os -fomit-frame-pointer -I $(LIBCMINI)/include
 #CFLAGS=-c -std=c99 -Os -I $(LIBCMINI)/include
-CFLAGS=-c -std=gnu99 -Os
+CFLAGS=-c -std=c99 -Os
 
 # LINKER PARAMETERS
 LDFLAGS=-nostdlib -s -L $(LIBCMINI)/lib -lcmini -lgcc
