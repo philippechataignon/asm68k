@@ -12,7 +12,7 @@ typedef struct {
 
 static inline s32 mulsi3(s32 a, s32 b)
 {
-    u32 r = 0;
+    s32 r = 0;
     while (a) {
         // if a is odd, add b to r
         if (a & 1)
@@ -39,4 +39,3 @@ s32 arrptr(desc* p)
     }
     return 0;
 }
-

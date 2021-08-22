@@ -1,9 +1,7 @@
 #include <stdio.h>
-unsigned int
-__mulsi3 (unsigned int a, unsigned int b)
+unsigned int mulsi3 (unsigned int a, unsigned int b)
 {
   unsigned int r = 0;
-
   while (a)
     {
       printf("a=%d b=%d r=%d\n", a, b, r);
@@ -16,10 +14,4 @@ __mulsi3 (unsigned int a, unsigned int b)
       b <<= 1;
     }
   return r;
-}
-
-int main()
-{
-    printf("%d\n", __mulsi3(132121312, 11));
-    return 0;
 }
