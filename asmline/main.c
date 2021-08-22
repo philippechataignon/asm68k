@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-int test(int a);
+#include "test.h"
 
 int main()
 {
