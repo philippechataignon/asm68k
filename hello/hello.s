@@ -1,24 +1,28 @@
-        move.l  #msg,a3
+bconin = 2
+bconout = 3
+cons = 2
+
+gemdos = 1
+bios = 13
+
+        lea     msg,a3
 lp:     clr.w   d0
         move.b  (a3)+,d0
-        beq.s   done
+        beq     done
         move.w  d0,-(sp)
-        move.w  #2,-(sp)
-        move    #3,-(sp)
-        trap    #13
+        move.w  #cons,-(sp)
+        move.w  #bconout,-(sp)
+        trap    #bios
         addq.l  #6,sp
-        bra.s   lp
+        bra     lp
 done:   
-        move.w    #4,-(sp)      ; 4 = kbd
-        move.w    #2,-(sp)     ; Offset 0
-        trap      #13          ; Call BIOS
-        addq.l    #4,sp        ; Correct stack
+        move.w    #cons,-(sp)
+        move.w    #bconin,-(sp)
+        trap      #bios
+        addq.l    #4,sp
+                            
+        clr.w   -(sp)           ; gemdos pterm0
+        trap    #gemdos
 
-        move.w  #2,-(sp)
-        move.w  #2,-(sp)
-        trap    #13
-        addq.l  #4,sp
-        clr.w   -(sp)
-        trap    #1
-
-msg     dc.b   "Hello World !",0
+msg     dc.b   "Hello World !\r\n"
+        dc.b   "This is line 2.\r\n",0
