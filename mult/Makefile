@@ -1,6 +1,7 @@
 # VASM PARAMETERS
 AS=vasmm68k_mot
 ASFLAGS=-quiet -Faout -x -m68000
+# ASFLAGS=-quiet -Fbin -x -m68000
 
 # GCC PARAMETERS
 LIBCMINI=~/src/libcmini
@@ -9,21 +10,22 @@ CC=m68k-atari-mint-gcc
 CFLAGS=-c -std=c99 -Os -fomit-frame-pointer -I $(LIBCMINI)/include
 
 # LINKER PARAMETERS
-LDFLAGS=-nostdlib -s -L $(LIBCMINI)/lib -lcmini -lgcc
+# LDFLAGS=-nostdlib -s -L $(LIBCMINI)/lib -lcmini -lgcc
 
 CSRC=$(wildcard *.c)
 SSRC=$(wildcard *.s)
 COBJ=$(CSRC:.c=.o)
 SOBJ=$(SSRC:.s=.o)
-TARGET=main.tos
 
-$(TARGET): $(COBJ) $(SOBJ)
+# $(TARGET): $(COBJ) $(SOBJ)
+main.tos: main.o multi.o
+	$(CC) $(LDFLAGS) -o $@ $^
 
 $(COBJ): $(CSRC)
 $(SOBJ): $(SSRC)
 
-$(TARGET): $(COBJ) $(SOBJ)
-	$(CC) $(LIBCMINI)/lib/crt0.o $(COBJ) $(SOBJ) $(LDFLAGS) -o $(TARGET) 
+#$(TARGET): $(COBJ) $(SOBJ)
+#	$(CC) $(LIBCMINI)/lib/crt0.o $(COBJ) $(SOBJ) $(LDFLAGS) -o $(TARGET) 
 
 clean:
 	rm -f $(TARGET) $(COBJ) $(SOBJ) 
